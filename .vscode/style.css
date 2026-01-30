@@ -1,0 +1,20 @@
+/* temperature couleur */
+.froid {
+    border: 2px solid blue;
+    color: blue;
+}
+
+.bon {
+    border: 2px solid green;
+    color: green;
+}
+
+.chaud {
+    border: 2px solid orange;
+    color: orange;
+}
+
+.alerte {
+    border: 2px solid red;
+    color: red;
+}

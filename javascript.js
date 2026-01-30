@@ -1,22 +1,40 @@
-/* Question 1 */
-const valeursNumeriques = [];
+/*Question 1 */
 
-// definir les variables
-const nbElements = 20;
-const min = -10;
-const max = 40;
+var I_valeursNumeriques = 20;
+var I_valeursMin = -10;
+var I_valeursMax = 40;
 
-//Création d'une boucle qui va répeter 20 fois
-for (let i = 0; i < nbElements; i++) {
+var monTableau = [];
 
-    // Génère un nombre entier aléatoire compris entre -10 et 40
-    const valeurAleatoire = Math.floor(Math.random() * (max - min + 1)) + min;
+for(let i = 0; i < I_valeursNumeriques ;i++){
 
-    //Ajout du nombre à la fin du tableau
-    valeursNumeriques.push(valeurAleatoire);
+    let valeurAleatoire = Math.floor(Math.random() * (I_valeursMax - I_valeursMin + 1)) + I_valeursMin;
+
+    monTableau.push(valeurAleatoire);
 }
 
-// Affiche le tableau final
-console.log("Tableau généré :", valeursNumeriques);
+console.log("Tableau généré : ", monTableau);
+
+/* Question 2 */
+const zoneAffichage = document.getElementById('affichage-valeur');
+zoneAffichage.textContent = monTableau.join(", ");
 
 /* Question 3 */
+
+// Création de la pause 
+const delai = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function animerAffichage() {
+    for (let i = 0; i < monTableau.length; i++) {
+        // remplacer le contenue acutel par la nouvelle valeur
+        zoneAffichage.textContent = monTableau[i];
+        
+        // Attendre 2 secondes
+        await delai(2000);
+    }
+    
+    // Affichage de fin
+    zoneAffichage.textContent = "Fin de l'affichage";
+}
+
+animerAffichage();
