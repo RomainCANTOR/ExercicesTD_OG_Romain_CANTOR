@@ -20,8 +20,6 @@ const zoneAffichage = document.getElementById('affichage-valeur');
 zoneAffichage.textContent = monTableau.join(", ");
 
 
-
-/* Utilisation d'une fonction asynchrone pour gérer le délai de 2s */
 async function animerAffichage() {
     for (let i = 0; i < monTableau.length; i++) {
         let valeur = monTableau[i];
@@ -31,7 +29,7 @@ async function animerAffichage() {
         zoneAffichage.className = ""; 
 
         
-        if (valeur <= 0) {
+        if (valeur <= 0) {  
             zoneAffichage.classList.add("froid");
             zoneAffichage.textContent = "Brrrrrrr, un peu froid ce matin, mets ta cagoule !";
         } 
@@ -43,11 +41,14 @@ async function animerAffichage() {
         } 
         else if (valeur > 30) {
             zoneAffichage.classList.add("alerte");
-            zoneAffichage.textContent =  "Caliente ! Vamos a la playa,ho hoho hoho !!"
+            zoneAffichage.textContent =  "Caliente ! Vamos a la playa,ho hoho hoho !!";
+            const messageAlerte = document.createElement("p");
+            messageAlerte.setAttribute("role", "alert");
+            messageAlerte.textContent = "Attention : Température critique !";
+            zoneAlerte.appendChild(messageAlerte);
         }
 
-        // 4. Ajout d'un délai de 2 secondes avant la prochaine valeur
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
     }
 }
 
